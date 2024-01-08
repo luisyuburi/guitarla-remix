@@ -2,13 +2,13 @@ import { MetaFunction } from "@remix-run/react/dist/routeModules";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "GuitarLA - Remix" },
+    { title: "Shop | AguitarLA" },
     { name: "description", content: "Welcome to Remix!" },
   ];
 };
 
 export default function Index() {
   return (
-    <h1>Hola mundo en Remix</h1>
+    <h1>Shop</h1>
   );
 }
