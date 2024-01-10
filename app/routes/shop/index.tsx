@@ -26,7 +26,7 @@ interface GuitarInterface {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Shop | AguitarLA" },
+    { title: "Shop | GuitarLA" },
     { name: "description", content: "Find the best guitars at the best price!" },
   ];
 };

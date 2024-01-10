@@ -1,7 +1,6 @@
-
-export const getGuitars = async () => {
+export const getPosts = async () => {
     try {
-        const response = await fetch(`${process.env.API_URL}/guitars?populate=image`)
+        const response = await fetch(`${process.env.API_URL}/posts?populate=image`)
         if (!response.ok) {
             throw new Error('Error al obtener datos');
         }
@@ -12,9 +11,9 @@ export const getGuitars = async () => {
     }
 };
 
-export const getGuitarByUrl = async (url:string) => {
+export const getPostByUrl = async (url:string) => {
     try {
-        const response = await fetch(`${process.env.API_URL}/guitars/?filters[url]=${url}&populate=image`)
+        const response = await fetch(`${process.env.API_URL}/posts/?filters[url]=${url}&populate=image`)
         if (!response.ok) {
             throw new Error('Error al obtener datos');
         }
@@ -24,6 +23,3 @@ export const getGuitarByUrl = async (url:string) => {
         console.error('Error al obtener datos:', error);
     }
 };
-
-
-//guitars/?filters[url]=townshend&populate=image
