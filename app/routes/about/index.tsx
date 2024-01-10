@@ -4,7 +4,7 @@ import Footer from "~/components/footer";
 import styles from '~/styles/about.css'
 export const meta: MetaFunction = () => {
   return [
-    { title: "About | AguitarLA" },
+    { title: "About | GuitarLA" },
     { name: "description", content: "Guitar sales, music blog" },
     { name: "keywords", content: "guitar, music, shop" },
 
