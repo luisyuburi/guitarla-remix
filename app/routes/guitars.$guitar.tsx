@@ -1,5 +1,5 @@
 
-import { useLoaderData, useRouteError } from '@remix-run/react'
+import { useLoaderData } from '@remix-run/react'
 import { MetaFunction, LinksFunction } from "@remix-run/react/dist/routeModules";
 
 import { getGuitarByUrl } from '~/models/guitars.server'

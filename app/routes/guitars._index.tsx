@@ -1,6 +1,6 @@
 import { MetaFunction } from "@remix-run/react/dist/routeModules";
-import type { LinksFunction, LoaderFunction } from '@remix-run/node'; // or "@remix-run/cloudflare"
-import { useLoaderData, Outlet } from '@remix-run/react'
+import type { LinksFunction } from '@remix-run/node'; // or "@remix-run/cloudflare"
+import { useLoaderData } from '@remix-run/react'
 import { getGuitars } from '~/models/guitars.server'
 import GuitarsList from "~/components/GuitarsList";
 // Import Internal Modules

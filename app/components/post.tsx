@@ -14,7 +14,7 @@ const Post: React.FC<PostInterface> = (props: PostInterface) => {
                 <h3>{title}</h3>
                 <p className="date">{fotmatDate(publishedAt)}</p>
                 <p className='summary'>{description}</p>
-                <Link className="link" to={`/posts/${url}`}>Read post</Link>
+                <Link className="link" to={`/blog/${url}`}>Read post</Link>
             </div>
         </article>
     )

@@ -1,4 +1,4 @@
-import { useLoaderData, Outlet, useOutletContext } from '@remix-run/react'
+import { Outlet, useOutletContext } from '@remix-run/react'
 import styles from '~/styles/guitars.css'
 
 export function links() {

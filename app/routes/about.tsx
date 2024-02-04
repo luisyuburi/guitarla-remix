@@ -1,6 +1,5 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/react/dist/routeModules";
 import image from '../../public/img/nosotros.jpg'
-import Footer from "~/components/footer";
 import styles from '~/styles/about.css'
 export const meta: MetaFunction = () => {
     return [

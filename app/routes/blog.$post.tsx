@@ -17,7 +17,6 @@ export const loader = async (params: any) => {
     return data
 };
 
-
 export const meta: MetaFunction = ({ data }: any) => {
     if (!data) {
         return [{
