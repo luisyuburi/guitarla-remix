@@ -15,9 +15,9 @@ const Navigation = () => {
                 Home
             </Link>
             <Link
-                to="/shop"
+                to="/guitars"
                 prefetch='render'
-                className={location.pathname === "/shop" ? 'active' : ''}
+                className={location.pathname === "/guitars" ? 'active' : ''}
             >
                 Shop
             </Link>
