@@ -7,14 +7,14 @@ import { Link } from "@remix-run/react"
 import { GuitarInterface } from "~/interfaces/guitar.interface"
 
 // Import Internal Modules
-// import styles from '~/styles/guitars.css'
+import styles from '~/styles/guitars.css'
 
-// export const links: LinksFunction = () => [
-//     {
-//         rel: 'stylesheet',
-//         href: styles
-//     }
-// ]
+export const links: LinksFunction = () => [
+    {
+        rel: 'stylesheet',
+        href: styles
+    }
+]
 
 const Guitar: React.FC<GuitarInterface> = (props: GuitarInterface) => {
     const { name, description, price, image, url } = props.guitar

@@ -93,10 +93,21 @@ export function ErrorBoundary() {
 
   if (isRouteErrorResponse(error)) {
     return (
-      <Document>
-        <p className='error'>{error.status} {error.data}</p>
-        <Link className='error-enlace' to="/">Tal vez quieras volvera a la página principal</Link>
-      </Document>
+      <html>
+        <head>
+          <title>404 - {error.data}</title>
+          <Meta />
+          <Links />
+        </head>
+        <body>
+          <Header />
+          <p className='error'>{error.status} {error.data}</p>
+          <Link className='error-enlace' to="/">Tal vez quieras volvera a la página principal</Link>
+          <Footer />
+          <Scripts />
+          <LiveReload />
+        </body>
+      </html>
     )
   } else if (error instanceof Error) {
     return (

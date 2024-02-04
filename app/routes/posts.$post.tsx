@@ -9,9 +9,9 @@ export const loader = async (params: any) => {
     const { post } = params.params
     const data: any = await getPostByUrl(post)
     if (!data) {
-        throw new Response('Entry not found', {
+        throw new Response('Blog not found', {
             status: 404,
-            statusText: 'Entry not found'
+            statusText: 'Blog not found'
         })
     }
     return data
