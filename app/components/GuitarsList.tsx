@@ -10,7 +10,9 @@ const GuitarsList = (props: any) => {
                     {guitars.map((guitar: any) => (
                         <Guitar
                             key={guitar?.id}
-                            guitar={guitar?.attributes} />
+                            guitar={guitar?.attributes}
+                            id={guitar?.id}
+                        />
                     ))}
                 </div>
             )}

@@ -1,13 +1,29 @@
-import { LinksFunction } from '@remix-run/node'
-import React from 'react'
+interface CourseData {
+    title: string;
+    content: CourseContentData[],
+    image: {
+        data: {
+            attributes: {
+                url: string;
+            }
+        }
+    };
+}
 
-import stylesCourse from '~/styles/course.css'
+interface CourseContentData {
+    children: Array<Object>
+}
 
 
-const Course = (props: any) => {
-    const { title, content, image } = props.course
+interface Props {
+    course: CourseData;
+}
 
-    const description = content.map((data: any) => data.children.map((child: any) => {
+
+const Course: React.FC<Props> = ({ course }) => {
+    const { title, content, image } = course
+
+    const description = content.map((data: CourseContentData) => data.children.map((child: any) => {
         return child.text
     }))
 
