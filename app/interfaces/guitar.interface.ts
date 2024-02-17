@@ -19,6 +19,7 @@ export interface GuitarInterface {
             }
         },
 
-    }
+    },
+    id?: string
 
 }

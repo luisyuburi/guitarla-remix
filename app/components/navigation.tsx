@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from '@remix-run/react'
 import { useLocation } from '@remix-run/react'
 
+import cartImage from '../../public/img/carrito.png'
 
 const Navigation = () => {
     const location = useLocation()
@@ -15,18 +16,11 @@ const Navigation = () => {
                 Home
             </Link>
             <Link
-                to="/shop"
+                to="/guitars"
                 prefetch='render'
-                className={location.pathname === "/shop" ? 'active' : ''}
+                className={location.pathname === "/guitars" ? 'active' : ''}
             >
                 Shop
-            </Link>
-            <Link
-                to="/blog"
-                prefetch='render'
-                className={location.pathname === "/blog" ? 'active' : ''}
-            >
-                Blog
             </Link>
             <Link
                 to="/about"
@@ -34,6 +28,19 @@ const Navigation = () => {
                 className={location.pathname === "/about" ? 'active' : ''}
             >
                 About
+            </Link>
+            <Link
+                to="/blog"
+                prefetch='render'
+            >
+                Blog
+            </Link>
+            <Link
+                to="/cart"
+                prefetch='render'
+                className={location.pathname === "/cart" ? 'active' : ''}
+            >
+                <img src={cartImage} alt='Cart' />
             </Link>
         </nav>
     )

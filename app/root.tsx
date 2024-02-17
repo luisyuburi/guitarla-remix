@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { cssBundleHref } from "@remix-run/css-bundle";
+import { useState, useEffect } from 'react'
 import type { LinksFunction } from "@remix-run/node";
 import {
   Links,
@@ -48,23 +48,54 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
+  const [cart, setCart] = useState<Object[]>(typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("cart") ?? '[]') : null);
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
+
+  const addCart = (guitar: any) => {
+    if (cart.some((guitarState: any) => guitarState.id === guitar.id)) {
+      // Iterate the array and identify the duplicate element
+      const updatedCart = cart.map((guitarState: any) => {
+        if (guitarState.id === guitar.id) {
+          //Overwrite the quantity
+          guitarState.quantity = guitar.quantity
+        }
+        return guitarState
+      })
+      // Add item to cart
+      setCart(updatedCart)
+    }
+    else {
+      setCart([...cart, guitar])
+    }
+  }
+
+  const updateQuantity = (guitar: any) => {
+    const cartUpdated = cart.map((guitarState: any) => {
+      if (guitarState.id === guitar.id) {
+        guitarState.quantity = guitar.quantity
+      }
+      return guitarState
+    })
+    setCart(cartUpdated)
+  }
+
+  const deleteGuitar = (id: string) => {
+    const cartUpdated = cart.filter((guitarState: any) => guitarState.id !== id)
+    setCart(cartUpdated)
+  }
   return (
-    <html lang="en">
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <Meta />
-        <Links />
-      </head>
-      <body>
-        <Header />
-        <Outlet />
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-        <Footer />
-      </body>
-    </html>
+    <Document>
+      <Outlet
+        context={{
+          addCart,
+          cart,
+          updateQuantity,
+          deleteGuitar
+        }}
+      />
+    </Document>
   );
 }
 
@@ -80,23 +111,34 @@ function Document({ children, ...props }: Props) {
         {children}
         <Footer />
         <Scripts />
-        <LiveReload />
+        <LiveReload port={3000} />
       </body>
     </html>
   )
 }
 
-/** Manejo de errores */
+/** Errors handling */
 
 export function ErrorBoundary() {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
     return (
-      <Document>
-        <p className='error'>{error.status} {error.data}</p>
-        <Link className='error-enlace' to="/">Tal vez quieras volvera a la página principal</Link>
-      </Document>
+      <html>
+        <head>
+          <title>404 - {error.data}</title>
+          <Meta />
+          <Links />
+        </head>
+        <body>
+          <Header />
+          <p className='error'>{error.status} {error.data}</p>
+          <Link className='error-enlace' to="/">Tal vez quieras volvera a la página principal</Link>
+          <Footer />
+          <Scripts />
+          <LiveReload port={3000} />
+        </body>
+      </html>
     )
   } else if (error instanceof Error) {
     return (
