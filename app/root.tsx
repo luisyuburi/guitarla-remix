@@ -48,7 +48,7 @@ export const links: LinksFunction = () => [
 ];
 
 export default function App() {
-  const [cart, setCart] = useState<Object[]>(typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("cart") ?? '[]') : null);
+  const [cart, setCart] = useState<Object[]>(typeof window !== 'undefined' ? JSON.parse(localStorage.getItem("cart") ?? '[]') : []);
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart))
   }, [cart])
